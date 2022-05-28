@@ -2,6 +2,9 @@
 - [2. Insertion in 1-D array](#2-insertion-in-1-d-array)
 - [3. Deletion in 1-D array](#3-deletion-in-1-d-array)
 - [5. Binary Search in array](#5-binary-search-in-array)
+- [6. Traversing in 2-D array](#6-traversing-in-2-d-array)
+- [7. Linked list traversing](#7-linked-list-traversing)
+- [8. Traversal in Linked list](#8-traversal-in-linked-list)
 
 #### 1. Traverse in 1-D array
 
@@ -262,4 +265,230 @@ Output:
 
 ```
 Element is present at index 3
+```
+
+#### 6. Traversing in 2-D array
+
+```c
+#include <stdio.h>
+int main()
+{
+    int i = 0, j = 0;
+    int arr[4][3] = {{1, 2, 3}, {2, 3, 4}, {3, 4, 5}, {4, 5, 6}};
+    // traversing 2D array
+    for (i = 0; i < 4; i++)
+    {
+        for (j = 0; j < 3; j++)
+        {
+            printf("arr[%d] [%d] = %d \n", i, j, arr[i][j]);
+        } // end of j
+    }     // end of i
+    return 0;
+}
+```
+
+Output:
+
+```
+Enter value for disp[0][0]:2
+Enter value for disp[0][1]:4
+Enter value for disp[0][2]:5
+Enter value for disp[1][0]:7
+Enter value for disp[1][1]:2
+Enter value for disp[1][2]:5
+Two Dimensional array elements:
+2 4 5
+7 2 5
+```
+
+#### 7. Linked list traversing
+
+```c
+// A simple C program for traversal of a linked list
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node
+{
+    int data;
+    struct Node *next;
+};
+
+// This function prints contents of linked list starting from
+// the given node
+void printList(struct Node *n)
+{
+    while (n != NULL)
+    {
+        printf(" %d ", n->data);
+        n = n->next;
+    }
+}
+
+int main()
+{
+    struct Node *head = NULL;
+    struct Node *second = NULL;
+    struct Node *third = NULL;
+
+    // allocate 3 nodes in the heap
+    head = (struct Node *)malloc(sizeof(struct Node));
+    second = (struct Node *)malloc(sizeof(struct Node));
+    third = (struct Node *)malloc(sizeof(struct Node));
+
+    head->data = 1;      // assign data in first node
+    head->next = second; // Link first node with second
+
+    second->data = 2; // assign data to second node
+    second->next = third;
+
+    third->data = 3; // assign data to third node
+    third->next = NULL;
+
+    printList(head);
+
+    return 0;
+}
+```
+
+Output:
+
+```
+ 1  2  3 
+```
+
+#### 8. Traversal in Linked list
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+void create(int);
+void search();
+struct node
+{
+    int data;
+    struct node *next;
+};
+struct node *head;
+void main()
+{
+    int choice, item, loc;
+    do
+    {
+        printf("\n1.Create\n2.Search\n3.Exit\n\nEnter your choice?\n");
+        scanf("%d", &choice);
+        switch (choice)
+        {
+        case 1:
+            printf("\nEnter the item\n");
+            scanf("%d", &item);
+            create(item);
+            break;
+        case 2:
+            search();
+        case 3:
+            exit(0);
+            break;
+        default:
+            printf("\nPlease enter valid choice\n");
+        }
+
+    } while (choice != 3);
+}
+void create(int item)
+{
+    struct node *ptr = (struct node *)malloc(sizeof(struct node *));
+    if (ptr == NULL)
+    {
+        printf("\nOVERFLOW\n");
+    }
+    else
+    {
+        ptr->data = item;
+        ptr->next = head;
+        head = ptr;
+        printf("\nNode inserted\n");
+    }
+}
+void search()
+{
+    struct node *ptr;
+    int item, i = 0, flag = 0;
+    ptr = head;
+    if (ptr == NULL)
+    {
+        printf("\nEmpty List\n");
+    }
+    else
+    {
+        printf("\nEnter item which you want to search?\n");
+        scanf("%d", &item);
+        while (ptr != NULL)
+        {
+            if (ptr->data == item)
+            {
+                printf("item found at location %d ", i + 1);
+                flag = 1;
+                break;
+            }
+            i++;
+            ptr = ptr->next;
+        }
+        if (flag == 0)
+        {
+            printf("Item not found\n");
+        }
+    }
+}
+```
+
+Output:
+
+```
+1.Create
+2.Search
+3.Exit
+
+Enter your choice?
+1
+
+Enter the item
+3
+
+Node inserted
+
+1.Create
+2.Search
+3.Exit
+
+Enter your choice?
+1
+
+Enter the item
+4
+
+Node inserted
+
+1.Create
+2.Search
+3.Exit
+
+Enter your choice?
+1
+
+Enter the item
+5
+
+Node inserted
+
+1.Create
+2.Search
+3.Exit
+
+Enter your choice?
+2
+
+Enter item which you want to search?
+5
+item found at location 2 
 ```
