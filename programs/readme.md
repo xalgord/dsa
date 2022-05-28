@@ -1,19 +1,22 @@
-## Contents:
-
-- [Contents:](#contents)
-    - [1. Traverse in 1-D array](#1-traverse-in-1-d-array)
-    - [2. Insertion in 1-D array](#2-insertion-in-1-d-array)
-    - [3. Deletion in 1-D array](#3-deletion-in-1-d-array)
-    - [5. Binary Search in array](#5-binary-search-in-array)
-    - [6. Traversing in 2-D array](#6-traversing-in-2-d-array)
-    - [7. Linked list traversing](#7-linked-list-traversing)
-    - [8. Creating, Searching, Traversal in Linked list](#8-creating-searching-traversal-in-linked-list)
-    - [9. Insertion in linked list from beginning, ending and nth position.](#9-insertion-in-linked-list-from-beginning-ending-and-nth-position)
-    - [10. Deleting Node from beginning, ending or nth position.](#10-deleting-node-from-beginning-ending-or-nth-position)
-    - [11. Stack implementation using Array](#11-stack-implementation-using-array)
-    - [12. Stack implementation using Linked List](#12-stack-implementation-using-linked-list)
-    - [13. Queue implementation using array.](#13-queue-implementation-using-array)
-    - [14. Queue implementation using Linked List.](#14-queue-implementation-using-linked-list)
+- [1. Traverse in 1-D array](#1-traverse-in-1-d-array)
+- [2. Insertion in 1-D array](#2-insertion-in-1-d-array)
+- [3. Deletion in 1-D array](#3-deletion-in-1-d-array)
+- [5. Binary Search in array](#5-binary-search-in-array)
+- [6. Traversing in 2-D array](#6-traversing-in-2-d-array)
+- [7. Linked list traversing](#7-linked-list-traversing)
+- [8. Creating, Searching, Traversal in Linked list](#8-creating-searching-traversal-in-linked-list)
+- [9. Insertion in linked list from beginning, ending and nth position.](#9-insertion-in-linked-list-from-beginning-ending-and-nth-position)
+- [10. Deleting Node from beginning, ending or nth position.](#10-deleting-node-from-beginning-ending-or-nth-position)
+- [11. Stack implementation using Array](#11-stack-implementation-using-array)
+- [12. Stack implementation using Linked List](#12-stack-implementation-using-linked-list)
+- [13. Queue implementation using array.](#13-queue-implementation-using-array)
+- [14. Queue implementation using Linked List.](#14-queue-implementation-using-linked-list)
+- [15. Bubble sort](#15-bubble-sort)
+- [16. Selection Sort](#16-selection-sort)
+- [17. Insertion Sort](#17-insertion-sort)
+- [18. Quick Sort](#18-quick-sort)
+- [19. Paranthesis Matching](#19-paranthesis-matching)
+- [20. String Reversal](#20-string-reversal)
 
 #### 1. Traverse in 1-D array
 
@@ -1656,4 +1659,389 @@ enter the choice
 6 : Get the number of entries in the queue
 7 : Exit
 7
+```
+
+#### 15. Bubble sort
+
+```c
+#include <stdio.h>
+void bubble_sort(long[], long);
+
+int main()
+{
+    long array[100], n, c;
+
+    printf("Enter number of elements\n");
+    scanf("%ld", &n);
+
+    printf("Enter %ld integers\n", n);
+
+    for (c = 0; c < n; c++)
+        scanf("%ld", &array[c]);
+
+    bubble_sort(array, n);
+
+    printf("Sorted list in ascending order:\n");
+
+    for (c = 0; c < n; c++)
+        printf("%ld\n", array[c]);
+
+    return 0;
+}
+
+void bubble_sort(long list[], long n)
+{
+    long c, d, t;
+
+    for (c = 0; c < n - 1; c++)
+    {
+        for (d = 0; d < n - c - 1; d++)
+        {
+            if (list[d] > list[d + 1])
+            {
+                /* Swapping */
+                t = list[d];
+                list[d] = list[d + 1];
+                list[d + 1] = t;
+            }
+        }
+    }
+}
+```
+
+Output:
+
+```
+Enter number of elements
+5
+Enter 5 integers
+3
+4
+5
+6
+3
+Sorted list in ascending order:
+3
+3
+4
+5
+6
+```
+
+#### 16. Selection Sort
+
+```c
+#include <stdio.h>
+void SelSort(int array[], int n);
+int main()
+{
+    int array[100], n, i;
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+    printf("Enter %d Numbers: ", n);
+    for (i = 0; i < n; i++)
+        scanf("%d", &array[i]);
+    SelSort(array, n);
+    return 0;
+}
+void SelSort(int array[], int n)
+{
+    int i, j, position, swap;
+    for (i = 0; i < (n - 1); i++)
+    {
+        position = i;
+        for (j = i + 1; j < n; j++)
+        {
+            if (array[position] > array[j])
+                position = j;
+        }
+        if (position != i)
+        {
+            swap = array[i];
+            array[i] = array[position];
+            array[position] = swap;
+        }
+    }
+    printf("Sorted Array: ");
+    for (i = 0; i < n; i++)
+        printf("%d ", array[i]);
+}
+```
+
+```
+Enter number of elements: 5
+Enter 5 Numbers: 3 8 2 5 1
+Sorted Array: 1 2 3 5 8
+```
+
+#### 17. Insertion Sort
+
+```c
+// C program for insertion sort
+#include <math.h>
+#include <stdio.h>
+
+/* Function to sort an array using insertion sort*/
+void insertionSort(int arr[], int n)
+{
+    int i, key, j;
+    for (i = 1; i < n; i++)
+    {
+        key = arr[i];
+        j = i - 1;
+
+        /* Move elements of arr[0..i-1], that are
+        greater than key, to one position ahead
+        of their current position */
+        while (j >= 0 && arr[j] > key)
+        {
+            arr[j + 1] = arr[j];
+            j = j - 1;
+        }
+        arr[j + 1] = key;
+    }
+}
+
+// A utility function to print an array of size n
+void printArray(int arr[], int n)
+{
+    int i;
+    for (i = 0; i < n; i++)
+        printf("%d ", arr[i]);
+    printf("\n");
+}
+
+/* Driver program to test insertion sort */
+int main()
+{
+    int arr[] = {12, 11, 13, 5, 6};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    insertionSort(arr, n);
+    printArray(arr, n);
+
+    return 0;
+}
+```
+
+Output:
+
+```
+5 6 11 12 13
+```
+
+#### 18. Quick Sort
+
+```c
+#include <stdio.h>
+void quicksort(int number[25], int first, int last)
+{
+    int i, j, pivot, temp;
+    if (first < last)
+    {
+        pivot = first;
+        i = first;
+        j = last;
+        while (i < j)
+        {
+            while (number[i] <= number[pivot] && i < last)
+                i++;
+            while (number[j] > number[pivot])
+                j--;
+            if (i < j)
+            {
+                temp = number[i];
+                number[i] = number[j];
+                number[j] = temp;
+            }
+        }
+        temp = number[pivot];
+        number[pivot] = number[j];
+        number[j] = temp;
+        quicksort(number, first, j - 1);
+        quicksort(number, j + 1, last);
+    }
+}
+int main()
+{
+    int i, count, number[25];
+    printf("How many elements are u going to enter?: ");
+    scanf("%d", &count);
+    printf("Enter %d elements: ", count);
+    for (i = 0; i < count; i++)
+        scanf("%d", &number[i]);
+    quicksort(number, 0, count - 1);
+    printf("Order of Sorted elements: ");
+    for (i = 0; i < count; i++)
+        printf(" %d", number[i]);
+    return 0;
+}
+```
+
+```
+How many elements are u going to enter?: 5
+Enter 5 elements: 3
+7
+8
+5
+6
+Order of Sorted elements:  3 5 6 7 8
+```
+
+#### 19. Paranthesis Matching
+
+```c
+#include <stdio.h>
+#include <string.h>
+
+#define MAXSIZE 100
+#define TRUE 1
+#define FALSE 0
+
+// Structure defining Stack data structure
+struct Stack
+{
+    int top;
+    int array[MAXSIZE];
+} st;
+
+/*
+Initializes the top index to -1
+*/
+void initialize()
+{
+    st.top = -1;
+}
+
+/*
+ Checks if Stack is Full or not
+*/
+int isFull()
+{
+    if (st.top >= MAXSIZE - 1)
+        return TRUE;
+    else
+        return FALSE;
+}
+
+/*
+ Checks if Stack is Empty or not
+*/
+int isEmpty()
+{
+    if (st.top == -1)
+        return TRUE;
+    else
+        return FALSE;
+}
+
+/*
+ Adds an element to stack and then increment top index
+*/
+void push(int num)
+{
+    if (isFull())
+        printf("Stack is Full...\n");
+    else
+    {
+        st.array[st.top + 1] = num;
+        st.top++;
+    }
+}
+
+/*
+ Removes top element from stack and decrement top index
+*/
+int pop()
+{
+    if (isEmpty())
+        printf("Stack is Empty...\n");
+    else
+    {
+        st.top = st.top - 1;
+        return st.array[st.top + 1];
+    }
+}
+
+int main()
+{
+    char inputString[100], c;
+    int i, length;
+    initialize();
+    printf("Enter a string of paranthesis\n");
+    gets(inputString);
+    length = strlen(inputString);
+    /*
+    # for '{' : we push '{' in stack
+    # for '}' : we pop a character from stack. For every '}' there must be one '{' earlier.
+                This will ensure that
+                ** There are equal number of '{' and '}' characters in string.
+                ** For every '{' there is a '}' in input string later.
+
+    */
+    for (i = 0; i < length; i++)
+    {
+        if (inputString[i] == '{')
+            push(inputString[i]);
+        else if (inputString[i] == '}')
+            pop();
+        else
+        {
+            printf("Error : Invalid Character !! \n");
+            return 0;
+        }
+    }
+
+    if (isEmpty())
+        printf("Valid Paranthesis Expression\n");
+    else
+        printf("InValid Paranthesis Expression\n");
+
+    return 0;
+}
+```
+
+```
+Enter a string of paranthesis
+{}{{}
+InValid Paranthesis Expression
+
+Enter a string of paranthesis
+{}{}{{}}
+Valid Paranthesis Expression
+```
+
+#### 20. String Reversal
+
+```c
+#include <stdio.h>
+#include <string.h>
+void reverseStr(char str[])
+{
+    int n = strlen(str);
+
+    for (int i = 0; i < n / 2; i++)
+    {
+        char ch = str[i];
+        str[i] = str[n - i - 1];
+        str[n - i - 1] = ch;
+    }
+}
+
+int main()
+{
+    char str[1000];
+    scanf("%s", str);
+    printf("\nString Before Reverse: %s", str);
+    reverseStr(str);
+    printf("\nString After Reverse: %s", str);
+    return 0;
+}
+```
+
+Output:
+
+```
+String Before Reverse: krishna
+String After Reverse: anhsirk
 ```
