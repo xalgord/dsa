@@ -30,6 +30,12 @@ int main()
 
 ```
 
+Output:
+
+```
+Array: 2 -1 5 6 0 -3
+```
+
 #### 2. Insertion in 1-D array
 
 ```c
@@ -102,6 +108,15 @@ int main()
 }
 ```
 
+Output:
+
+```
+ 10
+ 4
+ 12
+ 8
+```
+
 #### 3. Deletion in 1-D array
 
 ```c
@@ -141,6 +156,15 @@ void main()
 }
 ```
 
+Output:
+
+```
+Enter number of elements of array: 5
+Enter array elements: 1 2 3 4 5
+Enter the element you want to delete: 3
+The array after deletion of 3 is: 1 2 4 5 
+```
+
 4. Linear Search in Array
 
 ```c
@@ -171,6 +195,14 @@ int main()
         printf("\nElement is present at %d position of array", res);
     return 0;
 }
+```
+
+Output
+
+```
+The elements of the array are - 70 40 30 11 57 41 25 14 52 
+Element to be searched is - 41
+Element is present at 6 position of array
 ```
 
 #### 5. Binary Search in array
@@ -219,4 +251,10 @@ int main(void)
         : printf("Element is present at index %d", result);
     return 0;
 }
+```
+
+Output:
+
+```
+Element is present at index 3
 ```
