@@ -13,6 +13,7 @@
     - [11. Stack implementation using Array](#11-stack-implementation-using-array)
     - [12. Stack implementation using Linked List](#12-stack-implementation-using-linked-list)
     - [13. Queue implementation using array.](#13-queue-implementation-using-array)
+    - [14. Queue implementation using Linked List.](#14-queue-implementation-using-linked-list)
 
 #### 1. Traverse in 1-D array
 
@@ -1267,4 +1268,392 @@ Queue is :
 2.Delete element from queue
 3.Display all elements of queue
 4.Quit
+```
+
+#### 14. Queue implementation using Linked List.
+
+```c
+/*
+ * C Program to Implement various Queue Functions using Dynamic Memory Allocation (linked List)
+ */
+#include <stdio.h>
+#include <stdlib.h>
+#define MAX 10
+
+struct node
+{
+    int data;
+    struct node *link;
+} * front, *rear;
+
+// function protypes
+void insert();
+void delete ();
+void queue_size();
+void check();
+void first_element();
+
+void main()
+{
+    int choice, value;
+
+    while (1)
+    {
+        printf("enter the choice \n");
+        printf("1 : create an empty queue \n2 : Insert element\n");
+        printf("3 : Dequeue an element \n4 : Check if empty\n");
+        printf("5. Get the first element of the queue\n");
+        printf("6. Get the number of entries in the queue\n");
+        printf("7. Exit\n");
+        scanf("%d", &choice);
+        switch (choice) // menu driven program
+        {
+        case 1:
+            printf("Empty queue is created with a capacity of %d\n", MAX);
+            break;
+        case 2:
+            insert();
+            break;
+        case 3:
+            delete ();
+            break;
+        case 4:
+            check();
+            break;
+        case 5:
+            first_element();
+            break;
+        case 6:
+            queue_size();
+            break;
+        case 7:
+            exit(0);
+        default:
+            printf("wrong choice\n");
+            break;
+        }
+    }
+}
+
+// to insert elements in queue
+void insert()
+{
+    struct node *temp;
+
+    temp = (struct node *)malloc(sizeof(struct node));
+    printf("Enter value to be inserted \n");
+    scanf("%d", &temp->data);
+    temp->link = NULL;
+    if (rear == NULL)
+    {
+        front = rear = temp;
+    }
+    else
+    {
+        rear->link = temp;
+        rear = temp;
+    }
+}
+
+// delete elements from queue
+void delete ()
+{
+    struct node *temp;
+
+    temp = front;
+    if (front == NULL)
+    {
+        printf("queue is empty \n");
+        front = rear = NULL;
+    }
+    else
+    {
+        printf("deleted element is %d\n", front->data);
+        front = front->link;
+        free(temp);
+    }
+}
+
+// check if queue is empty or not
+void check()
+{
+    if (front == NULL)
+        printf("\nQueue is empty\n");
+    else
+        printf("*************** Elements are present in the queue **************\n");
+}
+
+// returns first element of queue
+void first_element()
+{
+    if (front == NULL)
+    {
+        printf("**************** The queue is empty ****************\n");
+    }
+    else
+        printf("**************** The front element is %d ***********\n", front->data);
+}
+
+// returns number of entries and displays the elements in queue
+void queue_size()
+{
+    struct node *temp;
+
+    temp = front;
+    int cnt = 0;
+    if (front == NULL)
+    {
+        printf(" queue empty \n");
+    }
+    while (temp)
+    {
+        printf("%d  ", temp->data);
+        temp = temp->link;
+        cnt++;
+    }
+    printf("********* size of queue is %d ******** \n", cnt);
+}
+```
+
+Output:
+
+```
+enter the choice
+1 : create an empty queue
+2 : Insert element
+3 : Dequeue an element
+4 : Check if empty
+5 : Get the first element of the queue
+6 : Get the number of entries in the queue
+7 : Exit
+6
+ 
+**************Size is 0 ************
+ 
+enter your choice
+1 : create an empty queue
+2 : Insert element
+3 : Dequeue an element
+4 : Check if empty
+5 : Get the first element of the queue
+6 : Get the number of entries in the queue
+7 : Exit
+3
+queue is empty
+enter the choice
+1 : create an empty queue
+2 : Insert element
+3 : Dequeue an element
+4 : Check if empty
+5 : Get the first element of the queue
+6 : Get the number of entries in the queue
+7 : Exit
+4
+queue is empty
+enter the choice
+1 : create an empty queue
+2 : Insert element
+3 : Dequeue an element
+4 : Check if empty
+5 : Get the first element of the queue
+6 : Get the number of entries in the queue
+7 : Exit
+5
+****************The queue is empty****************
+ 
+enter the choice
+1 : create an empty queue
+2 : Insert element
+3 : Dequeue an element
+4 : Check if empty
+5 : Get the first element of the queue
+6 : Get the number of entries in the queue
+7 : Exit
+2
+enter value to insert
+45
+ 
+enter the choice
+1 : create an empty queue
+2 : Insert element
+3 : Dequeue an element
+4 : Check if empty
+5 : Get the first element of the queue
+6 : Get the number of entries in the queue
+7 : Exit
+2
+enter value to insert
+56
+ 
+enter the choice
+1 : create an empty queue
+2 : Insert element
+3 : Dequeue an element
+4 : Check if empty
+5 : Get the first element of the queue
+6 : Get the number of entries in the queue
+7 : Exit
+2
+enter value to insert
+67
+ 
+enter the choice
+1 : create an empty queue
+2 : Insert element
+3 : Dequeue an element
+4 : Check if empty
+5 : Get the first element of the queue
+6 : Get the number of entries in the queue
+7 : Exit
+2
+enter value to insert
+78
+ 
+enter the choice
+1 : create an empty queue
+2 : Insert element
+3 : Dequeue an element
+4 : Check if empty
+5 : Get the first element of the queue
+6 : Get the number of entries in the queue
+7 : Exit
+2
+enter value to insert
+89
+ 
+enter the choice
+1 : create an empty queue
+2 : Insert element
+3 : Dequeue an element
+4 : Check if empty
+5 : Get the first element of the queue
+6 : Get the number of entries in the queue
+7 : Exit
+6
+- 45 -- 56 -- 67 -- 78 -- 89 -
+**************Size is 5 ************
+ 
+enter the choice
+1 : create an empty queue
+2 : Insert element
+3 : Dequeue an element
+4 : Check if empty
+5 : Get the first element of the queue
+6 : Get the number of entries in the queue
+7 : Exit
+5
+****************The front element is 45 ***********
+ 
+enter the choice
+1 : create an empty queue
+2 : Insert element
+3 : Dequeue an element
+4 : Check if empty
+5 : Get the first element of the queue
+6 : Get the number of entries in the queue
+7 : Exit
+3
+******45 has been removed******
+ 
+enter the choice
+1 : create an empty queue
+2 : Insert element
+3 : Dequeue an element
+4 : Check if empty
+5 : Get the first element of the queue
+6 : Get the number of entries in the queue
+7 : Exit
+3
+******56 has been removed******
+ 
+enter the choice
+1 : create an empty queue
+2 : Insert element
+3 : Dequeue an element
+4 : Check if empty
+5 : Get the first element of the queue
+6 : Get the number of entries in the queue
+7 : Exit
+3
+******67 has been removed******
+ 
+enter the choice
+1 : create an empty queue
+2 : Insert element
+3 : Dequeue an element
+4 : Check if empty
+5 : Get the first element of the queue
+6 : Get the number of entries in the queue
+7 : Exit
+6
+- 78 -- 89 -
+**************Size is 2 ************
+ 
+enter the choice
+1 : create an empty queue
+2 : Insert element
+3 : Dequeue an element
+4 : Check if empty
+5 : Get the first element of the queue
+6 : Get the number of entries in the queue
+7 : Exit
+3
+******78 has been removed******
+ 
+enter the choice
+1 : create an empty queue
+2 : Insert element
+3 : Dequeue an element
+4 : Check if empty
+5 : Get the first element of the queue
+6 : Get the number of entries in the queue
+7 : Exit
+3
+******89 has been removed******
+ 
+enter the choice
+1 : create an empty queue
+2 : Insert element
+3 : Dequeue an element
+4 : Check if empty
+5 : Get the first element of the queue
+6 : Get the number of entries in the queue
+7 : Exit
+6
+ 
+**************Size is 0 ************
+ 
+enter the choice
+1 : create an empty queue
+2 : Insert element
+3 : Dequeue an element
+4 : Check if empty
+5 : Get the first element of the queue
+6 : Get the number of entries in the queue
+7 : Exit
+2
+enter value to insert
+34
+ 
+enter the choice
+1 : create an empty queue
+2 : Insert element
+3 : Dequeue an element
+4 : Check if empty
+5 : Get the first element of the queue
+6 : Get the number of entries in the queue
+7 : Exit
+6
+- 34 -
+**************Size is 1 ************
+ 
+enter the choice
+1 : create an empty queue
+2 : Insert element
+3 : Dequeue an element
+4 : Check if empty
+5 : Get the first element of the queue
+6 : Get the number of entries in the queue
+7 : Exit
+7
 ```
