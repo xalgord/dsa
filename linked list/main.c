@@ -94,14 +94,34 @@ void delend()
     free(t);
 }
 
+struct node *deleteByValue(int value)
+{
+    struct node *p = head;
+    struct node *q = head->link;
+    while (q->data != value && q->link != NULL)
+    {
+        p = p->link;
+        q = q->link;
+    }
+
+    if (q->data == value)
+    {
+        p->link = q->link;
+        free(q);
+    }
+    return head;
+}
+
 int main()
 {
     insert(5);
     insert(6);
     insert(7);
     insert(8);
+    insert(9);
     delbegin();
     delend();
+    deleteByValue(7);
     insert_begin(4);
     traverse();
     return 0;
