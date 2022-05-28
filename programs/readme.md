@@ -101,3 +101,42 @@ int main()
     return 0;
 }
 ```
+
+#### 3. Deletion in 1-D array
+
+```c
+#include <stdio.h>
+void main()
+{
+    int a[10], i, j, k, n, l;
+    printf("Enter number of elements of array: ");
+    scanf("%d", &n);
+    printf("Enter array elements: ");
+    for (i = 0; i < n; i++)
+    {
+        scanf("%d", &a[i]);
+    }
+    printf("Enter the element you want to delete: ");
+    scanf("%d", &k);
+
+    for (j = 0; j < n; j++)
+    {
+        if (a[j] == k)
+        {
+            l = j;
+        }
+    }
+
+    for (j = l; j < n; j++)
+    {
+        a[j] = a[j + 1];
+    }
+    n = n - 1;
+
+    printf("The array after deletion of %d is: ", k);
+    for (i = 0; i < n; i++)
+    {
+        printf("%d ", a[i]);
+    }
+}
+```
