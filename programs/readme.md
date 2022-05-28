@@ -1,10 +1,7 @@
-# Contents:
-
-- [Contents:](#contents)
-      - [1. Traverse in 1-D array](#1-traverse-in-1-d-array)
-      - [2. Insertion in 1-D array](#2-insertion-in-1-d-array)
-      - [3. Deletion in 1-D array](#3-deletion-in-1-d-array)
-      - [5. Binary Search in array](#5-binary-search-in-array)
+- [1. Traverse in 1-D array](#1-traverse-in-1-d-array)
+- [2. Insertion in 1-D array](#2-insertion-in-1-d-array)
+- [3. Deletion in 1-D array](#3-deletion-in-1-d-array)
+- [5. Binary Search in array](#5-binary-search-in-array)
 
 #### 1. Traverse in 1-D array
 
