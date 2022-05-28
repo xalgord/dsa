@@ -1,6 +1,7 @@
 - [1. Traverse in 1-D array](#1-traverse-in-1-d-array)
 - [2. Insertion in 1-D array](#2-insertion-in-1-d-array)
 - [3. Deletion in 1-D array](#3-deletion-in-1-d-array)
+- [4. Linear Search in Array](#4-linear-search-in-array)
 - [5. Binary Search in array](#5-binary-search-in-array)
 - [6. Traversing in 2-D array](#6-traversing-in-2-d-array)
 - [7. Linked list traversing](#7-linked-list-traversing)
@@ -185,7 +186,7 @@ Enter the element you want to delete: 3
 The array after deletion of 3 is: 1 2 4 5 
 ```
 
-4. Linear Search in Array
+#### 4. Linear Search in Array
 
 ```c
 #include <stdio.h>
